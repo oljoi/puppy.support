@@ -18,7 +18,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
             <meta charset="utf-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <AutoReload options=options.clone() />
-            <HydrationScripts options/>
+            <HydrationScripts options islands=true/>
             <MetaTags/>
         </head>
         <body>
@@ -48,7 +48,7 @@ pub fn App() -> impl IntoView {
             work in progress
           </div>
 
-          <Clicker />
+         <Clicker />
         </Widgets>
 
         <main class="content">
@@ -76,7 +76,7 @@ fn PageNotFound() -> impl IntoView {
 }
 
 static PUPPY_LANG: [&'static str; 8] = ["woof", "bark", "wif", "awo", "waf", "rawr", "ow", "grr"];
-#[component]
+#[island]
 fn Clicker() -> impl IntoView {
   let mut hash = RandomState::new().build_hasher();
 
@@ -100,12 +100,12 @@ fn Clicker() -> impl IntoView {
   let divref = NodeRef::<Div>::new();
 
   Effect::new(move |_| {
-    let _ = count.get();
+    let count = count.get();
 
     if let Some(el) = divref.get() {
-      let _ = el.class_list().remove_1("pop-anim");
-      let _ = el.offset_width();
-      let _ = el.class_list().add_1("pop-anim");
+      let r = el.class_list().remove_1("pop-anim").unwrap_or_default();
+      let r2 = el.offset_width();
+      let r3 = el.class_list().add_1("pop-anim").unwrap_or_default();
     }
   });
 
