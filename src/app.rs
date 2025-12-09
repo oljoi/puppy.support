@@ -48,7 +48,7 @@ pub fn App() -> impl IntoView {
             work in progress
           </div>
 
-         <Clicker />
+         //<Clicker />
         </Widgets>
 
         <main class="content">
@@ -74,7 +74,7 @@ fn PageNotFound() -> impl IntoView {
     </div>
   }
 }
-
+/*
 static PUPPY_LANG: [&'static str; 8] = ["woof", "bark", "wif", "awo", "waf", "rawr", "ow", "grr"];
 #[island]
 fn Clicker() -> impl IntoView {
@@ -117,7 +117,7 @@ fn Clicker() -> impl IntoView {
       <div class="yap">{phrase}</div>
     </div>
   }
-}
+}*/
 
 #[component]
 fn Widgets(children: Children) -> impl IntoView {
