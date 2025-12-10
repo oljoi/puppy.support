@@ -102,6 +102,8 @@ fn Clicker() -> impl IntoView {
   Effect::new(move |_| {
     let count = count.get();
 
+    let el = divref.get();
+
     if let Some(el) = divref.get() {
       let r = el.class_list().remove_1("pop-anim").unwrap_or_default();
       let r2 = el.offset_width();

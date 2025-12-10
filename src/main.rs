@@ -9,7 +9,7 @@ async fn main() {
   use leptos_axum::{LeptosRoutes, generate_route_list};
   use puppy_support::app::*;
 
-  let conf = get_configuration(None).unwrap();
+  let conf = get_configuration(None).expect("Error with conf");
   let addr = conf.leptos_options.site_addr;
   let leptos_options = conf.leptos_options;
   let routes = generate_route_list(App);
@@ -26,7 +26,7 @@ async fn main() {
   let listener = tokio::net::TcpListener::bind(&addr).await.unwrap();
   axum::serve(listener, app.into_make_service())
     .await
-    .unwrap();
+    .expect("Error with axum");
 }
 
 #[cfg(not(feature = "ssr"))]
