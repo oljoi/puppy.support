@@ -48,7 +48,7 @@ pub fn App() -> impl IntoView {
             work in progress
           </div>
 
-         //<Clicker />
+         <Clicker />
         </Widgets>
 
         <main class="content">
@@ -74,7 +74,7 @@ fn PageNotFound() -> impl IntoView {
     </div>
   }
 }
-/*
+
 static PUPPY_LANG: [&'static str; 8] = ["woof", "bark", "wif", "awo", "waf", "rawr", "ow", "grr"];
 #[island]
 fn Clicker() -> impl IntoView {
@@ -102,12 +102,10 @@ fn Clicker() -> impl IntoView {
   Effect::new(move |_| {
     let count = count.get();
 
-    let el = divref.get();
-
     if let Some(el) = divref.get() {
-      let r = el.class_list().remove_1("pop-anim").unwrap_or_default();
+      let r = el.class_list().remove_1("pop-anim");
       let r2 = el.offset_width();
-      let r3 = el.class_list().add_1("pop-anim").unwrap_or_default();
+      let r3 = el.class_list().add_1("pop-anim");
     }
   });
 
@@ -119,7 +117,7 @@ fn Clicker() -> impl IntoView {
       <div class="yap">{phrase}</div>
     </div>
   }
-}*/
+}
 
 #[component]
 fn Widgets(children: Children) -> impl IntoView {
