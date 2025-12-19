@@ -3,7 +3,7 @@ use leptos::prelude::*;
 use std::collections::hash_map::RandomState;
 use std::hash::{BuildHasher, Hasher};
 
-static SVG_GRADIENTS: [&'static str; 4] = [
+pub static SVG_GRADIENTS: [&'static str; 4] = [
   // transfem flag gradient
   "<linearGradient id=\"nixlogo-gradient\" gradientTransform=\"rotate(90)\">
     <stop offset=\"0%\" stop-color=\"#74dfff\" />
@@ -83,7 +83,7 @@ static SVG_GRADIENTS: [&'static str; 4] = [
   </linearGradient>",
 ];
 
-static CSS_GRADIENTS: [&'static str; 4] = [
+pub static CSS_GRADIENTS: [&'static str; 4] = [
   "linear-gradient(to right,
       #74dfff 0%,
       #74dfff 15%,
@@ -164,7 +164,6 @@ pub fn Header() -> impl IntoView {
       </div>
       <div class="links">
         <a href="/">main</a>
-        <a href="/contacts">contacts</a>
         <a href="/projects">projects</a>
         <a href="/blog">blog</a>
       </div>

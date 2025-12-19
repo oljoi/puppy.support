@@ -5,10 +5,12 @@ use leptos_router::{
   StaticSegment,
   components::{Route, Router, Routes},
 };
-use std::collections::hash_map::RandomState;
+use std::collections::{BTreeMap, HashMap, hash_map::RandomState};
 use std::hash::{BuildHasher, Hasher};
 
-use crate::components::{footer::Footer, header::Header, icon::Icon, webring::Webring};
+use crate::components::{
+  clicker::Clicker, footer::Footer, header::Header, icon::Icon, webring::Webring,
+};
 
 pub fn shell(options: LeptosOptions) -> impl IntoView {
   view! {
@@ -32,6 +34,9 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
 pub fn App() -> impl IntoView {
   provide_meta_context();
 
+  let mut frens: BTreeMap<&'static str, &'static str> = BTreeMap::new();
+  frens.insert("https://nikableh.moe/88x31.png", "https://nikableh.moe/");
+
   view! {
     <Stylesheet id="leptos" href="/pkg/puppy-support.css"/>
 
@@ -45,16 +50,18 @@ pub fn App() -> impl IntoView {
       <div class="main">
         <Widgets>
           <div class="widget wip">
-            work in progress
+            work in progress<br />
+            im kinda still developing my site so content is from my old aboutme, sry
+            "><"
           </div>
 
          <Clicker />
+         <X8831 list=frens/>
         </Widgets>
 
         <main class="content">
         <Routes fallback=PageNotFound>
             <Route path=StaticSegment("") view=HomePage/>
-            <Route path=StaticSegment("/about") view=NotHomePage/>
           </Routes>
         </main>
       </div>
@@ -69,52 +76,8 @@ pub fn App() -> impl IntoView {
 fn PageNotFound() -> impl IntoView {
   view! {
     <div class="file notfound">
-      <img src="sad-puppy.webp" class="notfound-image"/>
+      <img src="sad-puppy.webp" class="notfound-image" loading="lazy" alt="sad puppy"/>
       <p>Page not found ":("</p>
-    </div>
-  }
-}
-
-static PUPPY_LANG: [&'static str; 8] = ["woof", "bark", "wif", "awo", "waf", "rawr", "ow", "grr"];
-#[island]
-fn Clicker() -> impl IntoView {
-  let mut hash = RandomState::new().build_hasher();
-
-  let phrase = RwSignal::new(String::from(""));
-  let count = RwSignal::new(1u8);
-  let on_click = move |_| {
-    count.update(|c| {
-      if *c < (u8::MAX - 1) {
-        *c += 1;
-      } else {
-        *c = 0;
-      }
-    });
-    phrase.update(|p| {
-      let idx = hash.finish() as usize % PUPPY_LANG.len();
-      *p = p.to_owned() + " " + PUPPY_LANG[idx];
-      hash.write(p.as_bytes());
-    });
-  };
-
-  let divref = NodeRef::<Div>::new();
-
-  Effect::new(move |_| {
-    let count = count.get();
-
-    if let Some(el) = divref.get() {
-      let r = el.class_list().remove_1("pop-anim");
-      let r2 = el.offset_width();
-      let r3 = el.class_list().add_1("pop-anim");
-    }
-  });
-
-  view! {
-    <div class="widget clicker">
-      <div class="counter" node_ref=divref>{count}x</div>
-      <div class="headline">"woof?"</div>
-      <button on:click=on_click>"Bark!"</button>
-      <div class="yap">{phrase}</div>
     </div>
   }
 }
@@ -129,41 +92,60 @@ fn Widgets(children: Children) -> impl IntoView {
 }
 
 #[component]
-fn HomePage() -> impl IntoView {
-  /*let count = RwSignal::new(1);
-  let on_click = move |_| {
-    count.update(|c| {
-      *c += 1;
-    });
-  };
-  let barks = move || "bark ".repeat(count.get().try_into().unwrap());*/
-
+fn X8831(list: BTreeMap<&'static str, &'static str>) -> impl IntoView {
   view! {
-    <div class="file">
-      pipi pupu<br />
-      1<br />
-      2<br />
-      3<br />
-      4<br />
+    <div class="widget buttons">
+      <div class="title">frens "<3"</div>
+      <div class="content">
+        {list.into_iter()
+          .map(|(img, link)| view! {
+            <div class="x8831">
+            <a href={link}><img src={img} loading="lazy" alt="88x31 button of {link}" /></a>
+            </div>
+          })
+          .collect_view()}
+      </div>
+      <div class="title">mine</div>
+      <div class="content">
+        <a href="https://puppy.support/88x31/shutup.gif">
+          <img src="https://puppy.support/88x31/shutup.gif" loading="lazy"/>
+        </a>
+      </div>
     </div>
-    <div class="file">
-      chat
-    </div>
-    //<h1>"woof :3"</h1>
-    //<button on:click=on_click>"Bark!"</button>
-    //<br />
-    //<span>{barks}</span>
   }
 }
 
 #[component]
-fn NotHomePage() -> impl IntoView {
+fn HomePage() -> impl IntoView {
   view! {
-    <div class="file">
-      puki kaki
-      2
-      3
-      4
+    <div class="info file">
+      <p>haiii :3</p>
+      <p>i am <b>oljoi</b> (she/them)<br />
+      stupid silly puppy and sometimes "embedded/system" engineer</p>
+      <p>
+      <b>some info about me:</b><br />
+      "i mainly like tinkering with microcontrollers and microprocessors, robots, (micro/nano)electronics and other hardware things ><"<br />
+      <br />
+      "also i enjoy physics, electrical engineering, operating systems, networking, homelabing"<br />
+      "and kissing girls,,,"</p>
+      <p>"i code mainly in rust but also in c, c++, c#, x86/riscv asm, lua, java, kotlin, ruby, python, javascript and typescript"<br />
+      <br />
+      "and talk in russian (native), english (c1). learning: suomi(a1), karelian"</p>
+      <b>contact me:</b>
+      <table class="contacts">
+        <tr>
+          <td>tg channel</td>
+          <td><a href="https://t.me/bottompuppydisorder">"@bottompuppydisorder"</a></td>
+        </tr>
+        <tr>
+          <td>fedi</td>
+          <td><a href="https://blahaj.love/@oljoi">"@oljoi@blahaj.love"</a></td>
+        </tr>
+        <tr>
+          <td>message me at </td>
+          <td><a href="https://t.me/olj0i">"@olj0i"</a></td>
+        </tr>
+      </table>
     </div>
   }
 }

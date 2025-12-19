@@ -22,12 +22,21 @@
   src: url("/fonts/VT323-Regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "geistmono";
+  src: url("/fonts/GeistMono-VariableFont_wght.ttf") format("truetype");
+}
+
 $dark-theme: true !default;
 $main-text-color: #faf9f6 !default;
 $main-background-color: #181a18 !default;
 $tile-background-color: color.adjust(
   $main-background-color,
   $whiteness: 4%
+) !default;
+$btn-background-color: color.adjust(
+  $main-background-color,
+  $whiteness: 16%
 ) !default;
 
 a {
@@ -44,12 +53,14 @@ a {
 }
 
 body {
-  font-family: "spacemono", monospace;
+  font-family: "geistmono", monospace;
   background-color: $main-background-color;
   color: $main-text-color;
   text-align: left;
-  max-width: 600px;
+  max-width: 710px;
   margin: 5vh auto;
+
+  font-size: 10pt;
 }
 
 .nix-icon {
@@ -64,6 +75,8 @@ body {
 }
 
 .widgets {
+  width: 177px;
+
   .widget {
     background-color: $tile-background-color;
 
@@ -121,10 +134,63 @@ body {
     color: white;
     padding: 5px 10px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 8pt;
   }
 
   .headline {
+  }
+
+  .btn {
+    border: none;
+    border-radius: 10px;
+    background-color: $btn-background-color;
+    color: $main-text-color;
+    font-weight: 400;
+    font-family: "geistmono", monospace;
+  }
+}
+
+.buttons {
+  text-align: center;
+  padding: 0 !important;
+
+  .title {
+    padding: 0.5em;
+  }
+
+  .content {
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0.5em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 1px;
+  }
+
+  .x8831 {
+    width: 88px;
+    height: 31px;
+    background-image: linear-gradient(
+      to right,
+      #d52d00 0%,
+      #d52d00 15%,
+      #ef7627 15%,
+      #ef7627 30%,
+      #ff9a56 30%,
+      #ff9a56 45%,
+      #ffffff 45%,
+      #ffffff 60%,
+      #d162a4 60%,
+      #d162a4 75%,
+      #b55690 75%,
+      #b55690 90%,
+      #a30262 90%,
+      #a30262 100%
+    );
   }
 }
 

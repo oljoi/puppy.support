@@ -12,7 +12,7 @@ RUN mkdir -p /app
 WORKDIR /app
 COPY . .
 
-RUN cargo leptos build --release -vv
+RUN cargo leptos build --release -vv -P
 
 FROM docker.io/rustlang/rust:nightly-alpine as runner
 

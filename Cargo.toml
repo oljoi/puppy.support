@@ -16,9 +16,11 @@ leptos_meta = { version = "0.8" }
 tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
 wasm-bindgen = { version = "=0.2.105", optional = true }
 simpleicons-rs = "16.1.0"
+turso = { version = "0.3.2", optional = true }
 
 [features]
 ssr = [
+  "dep:turso",
   "dep:axum",
   "dep:tokio",
   "dep:leptos_axum",
@@ -56,7 +58,7 @@ style-file = "style/main.scss"
 assets-dir = "public"
 
 # The IP and port (ex: 127.0.0.1:3000) where the server serves the content. Use it in your server setup.
-site-addr = "127.0.0.1:3000"
+site-addr = "127.0.0.1:3002"
 
 # The port to use for automatic reload monitoring
 reload-port = 3001
