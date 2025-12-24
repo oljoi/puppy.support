@@ -2434,9 +2434,9 @@ checksum = "0fda2ff0d084019ba4d7c6f371c95d8fd75ce3524c3cb8fb653a3023f6323e64"
 
 [[package]]
 name = "simpleicons-rs"
-version = "16.1.0"
+version = "16.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "489db561c4724339368febba0b142f87e204f99b1d3d704d44d9763f804f27d1"
+checksum = "c72f4fbed335db665cd20a0be4ea03586f6b9dd0a06e763219183bacbe94a3cd"
 dependencies = [
  "csscolorparser",
 ]

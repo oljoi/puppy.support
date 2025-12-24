@@ -21,7 +21,7 @@ pub fn shell(options: LeptosOptions) -> impl IntoView {
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <AutoReload options=options.clone() />
             <HydrationScripts options islands=true/>
-            <MetaTags/>
+            <MetaTags />
         </head>
         <body>
             <App/>
@@ -35,7 +35,7 @@ pub fn App() -> impl IntoView {
   provide_meta_context();
 
   let mut frens: BTreeMap<&'static str, &'static str> = BTreeMap::new();
-  frens.insert("https://nikableh.moe/88x31.png", "https://nikableh.moe/");
+  //frens.insert("https://nikableh.moe/88x31.png", "https://nikableh.moe/");
 
   view! {
     <Stylesheet id="leptos" href="/pkg/puppy-support.css"/>
@@ -100,7 +100,7 @@ fn X8831(list: BTreeMap<&'static str, &'static str>) -> impl IntoView {
         {list.into_iter()
           .map(|(img, link)| view! {
             <div class="x8831">
-            <a href={link}><img src={img} loading="lazy" alt="88x31 button of {link}" /></a>
+            <a href={link}><img src={img} loading="lazy" alt={link} /></a>
             </div>
           })
           .collect_view()}

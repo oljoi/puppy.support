@@ -15,7 +15,7 @@ leptos_axum = { version = "0.8", optional = true }
 leptos_meta = { version = "0.8" }
 tokio = { version = "1", features = ["rt-multi-thread"], optional = true }
 wasm-bindgen = { version = "=0.2.105", optional = true }
-simpleicons-rs = "16.1.0"
+simpleicons-rs = "16.2.0"
 turso = { version = "0.3.2", optional = true }
 
 [features]
