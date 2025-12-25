@@ -1,6 +1,6 @@
 use leptos::html::Div;
 use leptos::prelude::*;
-use leptos_meta::{Link, MetaTags, Stylesheet, Title, provide_meta_context};
+use leptos_meta::{Link, MetaTags, Meta, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
   StaticSegment,
   components::{Route, Router, Routes},
@@ -35,7 +35,7 @@ pub fn App() -> impl IntoView {
   provide_meta_context();
 
   let mut frens: BTreeMap<&'static str, &'static str> = BTreeMap::new();
-  //frens.insert("https://nikableh.moe/88x31.png", "https://nikableh.moe/");
+  frens.insert("https://nikableh.moe/88x31.png", "https://nikableh.moe/");
 
   view! {
     <Stylesheet id="leptos" href="/pkg/puppy-support.css"/>
@@ -43,6 +43,8 @@ pub fn App() -> impl IntoView {
     <Title text="oljoi"/>
 
     <Link rel="icon" href="blahaj.gif" type_="image/gif" />
+
+    <Meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <Router>
       <Header />
