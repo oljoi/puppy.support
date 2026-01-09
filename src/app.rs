@@ -1,6 +1,6 @@
 use leptos::html::Div;
 use leptos::prelude::*;
-use leptos_meta::{Link, MetaTags, Meta, Stylesheet, Title, provide_meta_context};
+use leptos_meta::{Link, Meta, MetaTags, Stylesheet, Title, provide_meta_context};
 use leptos_router::{
   StaticSegment,
   components::{Route, Router, Routes},

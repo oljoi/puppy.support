@@ -10,6 +10,15 @@ pub fn Footer() -> impl IntoView {
           and <a href="https://webassembly.org"><Icon svg=simpleicons_rs::SIWEBASSEMBLY.svg /></a>
           with <a href="https://www.leptos.dev"><Icon svg=simpleicons_rs::SILEPTOS.svg /></a> by oljoi
       </div>
+
+      <hr />
+
+      <Webring
+        prev_url = "https://webring.otomir23.me/oljoi/prev"
+        home_url = "https://webring.otomir23.me/"
+        home_name = "otoring"
+        next_url = "https://webring.otomir23.me/oljoi/next"
+      />
     </div>
   }
 }
