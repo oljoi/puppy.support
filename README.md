@@ -2,4 +2,4 @@
 
 woof
 
-![dog](https://random.dog/woof)
+![dog](https://dog.ceo/api/breeds/image/random)
